@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.6](https://github.com/liblaf/actions/compare/v0.1.5...v0.1.6) (2025-05-25)
+
+
+### 🐛 Bug Fixes
+
+* migrate from mike to mkdocs gh-deploy ([05b5b80](https://github.com/liblaf/actions/commit/05b5b80268bffe3f477ce50889fb4edee92f2546))
+* rename mise config file from 99-custom.toml to config.dev.toml ([b2b6443](https://github.com/liblaf/actions/commit/b2b64432058f2c23dccc7a415ec006dbb9e39931))
+
 ## [0.1.5](https://github.com/liblaf/actions/compare/v0.1.4..v0.1.5) - 2025-05-22
 
 ### ✨ Features
