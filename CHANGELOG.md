@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.9](https://github.com/liblaf/actions/compare/v0.1.8...v0.1.9) (2025-07-27)
+
+
+### 🐛 Bug Fixes
+
+* **ruleset-import:** remove explicit Python version from pipx command ([4b963cf](https://github.com/liblaf/actions/commit/4b963cfc3c662e7fd82a785b399ba578913bc389))
+
 ## [0.1.8](https://github.com/liblaf/actions/compare/v0.1.7..v0.1.8) - 2025-06-08
 
 ### 🐛 Bug Fixes
