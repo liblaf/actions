@@ -1,13 +1,12 @@
 # Changelog
 
-## [0.1.9](https://github.com/liblaf/actions/compare/v0.1.8...v0.1.9) (2025-07-27)
-
+## [unreleased]
 
 ### 🐛 Bug Fixes
 
-* **ruleset-import:** remove explicit Python version from pipx command ([4b963cf](https://github.com/liblaf/actions/commit/4b963cfc3c662e7fd82a785b399ba578913bc389))
+- **ruleset-import:** remove explicit Python version from pipx command - ([4b963cf](https://github.com/liblaf/actions/commit/4b963cfc3c662e7fd82a785b399ba578913bc389))
 
-## [0.1.8](https://github.com/liblaf/actions/compare/v0.1.7..v0.1.8) - 2025-06-08
+## [0.1.8](https://github.com/liblaf/actions/compare/v0.1.7..v0.1.8) - 2025-06-09
 
 ### 🐛 Bug Fixes
 
@@ -18,10 +17,6 @@
 ### ♻ Code Refactoring
 
 - **commit:** simplify branch handling logic - ([26f76e1](https://github.com/liblaf/actions/commit/26f76e15b202f646c0f2feb87c0a3336c9639975))
-
-### ❤️ New Contributors
-
-- [@liblaf](https://github.com/liblaf) made their first contribution
 
 ## [0.1.7](https://github.com/liblaf/actions/compare/v0.1.6..v0.1.7) - 2025-06-07
 
