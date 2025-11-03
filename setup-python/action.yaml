@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+
+name: Setup Python
+
+author: liblaf
+
+description: Setup Python
+
+inputs:
+  python-version:
+    description: python-version
+    required: false
+
+outputs:
+  pixi:
+    description: pixi
+    value: ${{ steps.manager.outputs.pixi }}
+  python-version:
+    description: python-version
+    value: ${{ steps.python.outputs.python-version }}
+  uv:
+    description: uv
+    value: ${{ steps.manager.outputs.uv }}
+
+runs:
+  using: composite
+  steps:
+    - id: manager
+      name: Detect Package Manager
+      run: |-
+        function detect-manager() {
+          local manager="$1"
+          local lockfile="$2"
+          if [[ -n "$(find '.' -name "$lockfile" -type f)" ]]; then
+            printf '%s=true\n' "$manager" >> "$GITHUB_OUTPUT"
+          else
+            printf '%s=false\n' "$manager" >> "$GITHUB_OUTPUT"
+          fi
+        }
+        detect-manager 'uv' 'uv.lock'
+        detect-manager 'pixi' 'pixi.lock'
+      shell: bash
+
+    # TODO: handle `python-version` input for pixi
+    - if: steps.manager.outputs.pixi == 'true'
+      name: Setup Pixi
+      uses: prefix-dev/setup-pixi@v0
+      with:
+        run-install: true
+        activate-environment: true
+        locked: false
+    - if: steps.manager.outputs.pixi == 'true'
+      name: Install Dependencies
+      run: hatch build --hooks-only
+      shell: bash
+
+    - id: python
+      if: steps.manager.outputs.uv == 'true'
+      name: Setup Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: ${{ inputs.python-version }}
+        python-version-file: pyproject.toml
+    - if: steps.manager.outputs.uv == 'true'
+      name: Setup uv
+      uses: astral-sh/setup-uv@v7
+      with:
+        python-version: ${{ steps.python.outputs.python-version }}
+        activate-environment: true
+    - if: steps.manager.outputs.uv == 'true'
+      name: Install Dependencies
+      run: uv sync --all-extras --all-groups --active --frozen --all-packages
+      shell: bash
