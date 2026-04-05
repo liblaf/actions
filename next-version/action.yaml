@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+
+name: Next Version
+description: Resolve the release tag and version from git-cliff, honoring `Release-As` trailers.
+author: liblaf
+
+outputs:
+  bumped:
+    description: Whether the resolved tag differs from the previous release version.
+  release-as:
+    description: Whether a `Release-As` trailer overrode the computed version.
+  tag:
+    description: The resolved release tag, including the leading `v`.
+  version:
+    description: The resolved release version without the leading `v`.
+
+runs:
+  using: node24
+  main: ./dist/index.js
